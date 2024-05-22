@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:maybe_app/presentation/widgets/destination_bubble_chat.dart';
-import 'package:maybe_app/presentation/widgets/my_bubble_chat.dart';
+import 'package:maybe_app/presentation/widgets/chat/destination_bubble_chat.dart';
+import 'package:maybe_app/presentation/widgets/chat/input_message_chat.dart';
+import 'package:maybe_app/presentation/widgets/chat/my_bubble_chat.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -35,7 +36,7 @@ class BodyChat extends StatelessWidget {
                 }
               )
             ),
-            Text('AREA DE ENVIO DE MENSAJES'),
+            const InputMessageChat(),
           ],
         ),
       ),
