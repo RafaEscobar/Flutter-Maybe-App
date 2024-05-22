@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/presentation/widgets/my_bubble_chat.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -19,13 +20,13 @@ class BodyChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 8),
         child: Column(
           children: [
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return Text('Hola para #$index');
+                  return const MyBubbleChat();
                 }
               )
             ),
@@ -45,15 +46,16 @@ class AppBarChat extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return AppBar(
-      backgroundColor: Colors.cyan,
+      backgroundColor: colors.tertiary,
       leading: const Padding(
         padding: EdgeInsets.all(6.0),
         child: CircleAvatar(
           backgroundImage: NetworkImage('https://m.media-amazon.com/images/I/81xWWYfuQwL._UC256,256_CACC,256,256_.jpg'),
         )
       ),
-      title: const Text('Rocky 🥊'),
+      title: const Text('Rocky 🥊', style: TextStyle(color: Colors.white),),
       centerTitle: true,
     );
   }

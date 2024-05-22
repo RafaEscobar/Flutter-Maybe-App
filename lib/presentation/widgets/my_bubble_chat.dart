@@ -5,6 +5,22 @@ class MyBubbleChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('My bubble chat');
+    final colors = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: colors.primary,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            child: Text('No lo se', style: TextStyle(fontSize: 16, color: Colors.white),),
+          ),
+        ),
+        const SizedBox(height: 10)
+      ],
+    );
   }
 }
