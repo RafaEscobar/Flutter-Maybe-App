@@ -5,6 +5,10 @@ class InputMessageChat extends StatelessWidget {
 
  @override
  Widget build(BuildContext context) {
+
+  final textController = TextEditingController();
+  final focusNode = FocusNode();
+
   final inputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(20),
     borderSide: const BorderSide( color: Colors.transparent ),
@@ -17,22 +21,24 @@ class InputMessageChat extends StatelessWidget {
     suffixIcon: IconButton(
       icon: const Icon( Icons.send ),
       onPressed: () {
-        print("No se como rescatar el valor todavia");
+        print(textController.value.text);
+        textController.clear();
       },
     )
   );
 
   return TextFormField(
+    focusNode: focusNode,
+    controller: textController,
     decoration: inputDecorationChat,
     onFieldSubmitted: (value){
-      print('Enviado $value');
+      print(value);
+      textController.clear();
+      focusNode.requestFocus();
     },
-    onChanged: (value){
-      print('Cambiado $value');
+    onTapOutside: (event) {
+      focusNode.unfocus();
     },
-    style: const TextStyle(
-      
-    ),
   );
 
  }

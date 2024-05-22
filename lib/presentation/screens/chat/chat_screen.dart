@@ -62,7 +62,6 @@ class AppBarChat extends StatelessWidget implements PreferredSizeWidget {
         )
       ),
       title: const Text('Rocky 🥊', style: TextStyle(color: Colors.white),),
-      centerTitle: true,
     );
   }
 }
