@@ -16,7 +16,7 @@ class MyBubbleChat extends StatelessWidget {
           ),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            child: Text('No lo se', style: TextStyle(fontSize: 16, color: Colors.white),),
+            child: Text('Simon, hola a todos', style: TextStyle(fontSize: 16, color: Colors.white),),
           ),
         ),
         const SizedBox(height: 10)

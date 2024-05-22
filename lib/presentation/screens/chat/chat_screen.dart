@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/presentation/widgets/destination_bubble_chat.dart';
 import 'package:maybe_app/presentation/widgets/my_bubble_chat.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -25,12 +26,16 @@ class BodyChat extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
+                itemCount: 10,
                 itemBuilder: (context, index) {
-                  return const MyBubbleChat();
+                  return (index % 2 == 0) ?
+                  const MyBubbleChat() :
+                  const DestinationBubbleChat()
+                  ;
                 }
               )
             ),
-            Text('Hola2'),
+            Text('AREA DE ENVIO DE MENSAJES'),
           ],
         ),
       ),
