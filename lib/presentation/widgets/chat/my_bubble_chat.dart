@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/domain/entities/message.dart';
 
 class MyBubbleChat extends StatelessWidget {
-  final String message;
+  final Message messageEntity;
 
   const MyBubbleChat({
-    required this.message,
+    required this.messageEntity,
     super.key
   });
 
@@ -21,7 +22,7 @@ class MyBubbleChat extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            child: Text(message, style: const TextStyle(fontSize: 16, color: Colors.white),),
+            child: Text(messageEntity.message, style: const TextStyle(fontSize: 16, color: Colors.white),),
           ),
         ),
         const SizedBox(height: 10)

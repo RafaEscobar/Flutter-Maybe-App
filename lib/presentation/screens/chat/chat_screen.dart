@@ -38,7 +38,7 @@ class BodyChat extends StatelessWidget {
                   final message = chatProvider.messages[index];
 
                   return ( message.fromWho == FromWho.me ) ?
-                    MyBubbleChat(message: message.message,) :
+                    MyBubbleChat(messageEntity: message,) :
                     const DestinationBubbleChat()
                   ;
                 }
