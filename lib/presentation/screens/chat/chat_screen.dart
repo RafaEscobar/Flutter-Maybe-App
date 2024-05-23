@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/domain/entities/message.dart';
+import 'package:maybe_app/domain/entities/providers/chat_provider.dart';
 import 'package:maybe_app/presentation/widgets/chat/destination_bubble_chat.dart';
 import 'package:maybe_app/presentation/widgets/chat/input_message_chat.dart';
 import 'package:maybe_app/presentation/widgets/chat/my_bubble_chat.dart';
+import 'package:provider/provider.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -20,6 +23,9 @@ class BodyChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 8),
@@ -27,11 +33,13 @@ class BodyChat extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: chatProvider.messages.length ,
                 itemBuilder: (context, index) {
-                  return (index % 2 == 0) ?
-                  const MyBubbleChat() :
-                  const DestinationBubbleChat()
+                  final message = chatProvider.messages[index];
+
+                  return ( message.fromWho == FromWho.me ) ?
+                    MyBubbleChat(message: message.message,) :
+                    const DestinationBubbleChat()
                   ;
                 }
               )
