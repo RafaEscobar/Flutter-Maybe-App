@@ -31,6 +31,7 @@ class BodyChat extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
+                controller: chatProvider.chatScrollController,
                 itemCount: chatProvider.messages.length ,
                 itemBuilder: (context, index) {
                   final message = chatProvider.messages[index];
