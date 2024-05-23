@@ -23,9 +23,7 @@ class BodyChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final chatProvider = context.watch<ChatProvider>();
-
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 8),
@@ -36,7 +34,6 @@ class BodyChat extends StatelessWidget {
                 itemCount: chatProvider.messages.length ,
                 itemBuilder: (context, index) {
                   final message = chatProvider.messages[index];
-
                   return ( message.fromWho == FromWho.me ) ?
                     MyBubbleChat(messageEntity: message,) :
                     const DestinationBubbleChat()
