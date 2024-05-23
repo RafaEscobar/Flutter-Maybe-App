@@ -17,10 +17,11 @@ class ChatProvider extends ChangeNotifier {
     messages.add(newMessage);
 
     notifyListeners();
-    moveScrollToBottom();
+    await moveScrollToBottom();
   }
 
-  void moveScrollToBottom(){
+  Future<void> moveScrollToBottom() async {
+    await Future.delayed(const Duration(milliseconds: 100));
     chatScrollController.animateTo(
       chatScrollController.position.maxScrollExtent,
       duration: const Duration(milliseconds: 300),
