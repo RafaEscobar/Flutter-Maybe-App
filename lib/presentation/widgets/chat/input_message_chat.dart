@@ -27,18 +27,21 @@ class InputMessageChat extends StatelessWidget {
     )
   );
 
-  return TextFormField(
-    focusNode: focusNode,
-    controller: textController,
-    decoration: inputDecorationChat,
-    onFieldSubmitted: (value){
-      print(value);
-      textController.clear();
-      focusNode.requestFocus();
-    },
-    onTapOutside: (event) {
-      focusNode.unfocus();
-    },
+  return Padding(
+    padding: const EdgeInsets.only(top: 6),
+    child: TextFormField(
+      focusNode: focusNode,
+      controller: textController,
+      decoration: inputDecorationChat,
+      onFieldSubmitted: (value){
+        print(value);
+        textController.clear();
+        focusNode.requestFocus();
+      },
+      onTapOutside: (event) {
+        focusNode.unfocus();
+      },
+    ),
   );
 
  }

@@ -11,5 +11,4 @@ class Message {
     this.imgUrl,
     required this.fromWho
   });
-
 }
