@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 class InputMessageChat extends StatelessWidget {
-  const InputMessageChat({super.key});
+  final ValueChanged onValue;
+
+  const InputMessageChat({
+    required this.onValue,
+    super.key
+  });
 
  @override
  Widget build(BuildContext context) {
-
   final textController = TextEditingController();
   final focusNode = FocusNode();
 
@@ -21,8 +25,9 @@ class InputMessageChat extends StatelessWidget {
     suffixIcon: IconButton(
       icon: const Icon( Icons.send ),
       onPressed: () {
-        print(textController.value.text);
+        final textValue = textController.value.text;
         textController.clear();
+        onValue(textValue);
       },
     )
   );
@@ -34,9 +39,9 @@ class InputMessageChat extends StatelessWidget {
       controller: textController,
       decoration: inputDecorationChat,
       onFieldSubmitted: (value){
-        print(value);
         textController.clear();
         focusNode.requestFocus();
+        onValue(value);
       },
       onTapOutside: (event) {
         focusNode.unfocus();

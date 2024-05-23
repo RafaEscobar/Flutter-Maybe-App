@@ -41,7 +41,9 @@ class BodyChat extends StatelessWidget {
                 }
               )
             ),
-            const InputMessageChat(),
+            InputMessageChat(
+              onValue: (value) => chatProvider.sendMessage(value),
+            ),
           ],
         ),
       ),
