@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/domain/entities/message.dart';
 
 class DestinationBubbleChat extends StatelessWidget {
-  const DestinationBubbleChat({super.key});
+  final Message messageEntity;
+  const DestinationBubbleChat({
+    required this.messageEntity,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +19,13 @@ class DestinationBubbleChat extends StatelessWidget {
             color: colors.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            child: Text('Hola mundo', style: TextStyle(fontSize: 16, color: Colors.white),)
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            child: Text((messageEntity.message=='yes'?'Si':(messageEntity.message=='no'?'No':'Quizas')), style: const TextStyle(fontSize: 16, color: Colors.white),)
           ),
         ),
         const SizedBox(height: 5),
-        const ImageResponse(),
+        ImageResponse(answerImage: messageEntity.imgUrl,),
         const SizedBox(height: 8,)
       ],
     );
@@ -28,7 +33,11 @@ class DestinationBubbleChat extends StatelessWidget {
 }
 
 class ImageResponse extends StatelessWidget {
-  const ImageResponse({super.key});
+  final String? answerImage;
+  const ImageResponse({
+    required this.answerImage,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +45,7 @@ class ImageResponse extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(18),
       child: Image.network(
-        'https://yesno.wtf/assets/yes/12-e4f57c8f172c51fdd983c2837349f853.gif',
+        answerImage ?? 'https://yesno.wtf/assets/yes/10-271c872c91cd72c1e38e72d2f8eda676.gif',
         width: size.width * 0.6,
         height: 120,
         fit: BoxFit.cover,
