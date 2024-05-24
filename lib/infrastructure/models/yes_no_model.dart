@@ -1,3 +1,5 @@
+import 'package:maybe_app/domain/entities/message.dart';
+
 class YesNoModel {
     String answer;
     bool forced;
@@ -20,4 +22,11 @@ class YesNoModel {
         "forced": forced,
         "image": image,
     };
+
+    Message toMessageEntity() => Message(
+      message: (answer == 'yes') ? 'Si' :
+        ( answer == 'no' ) ? 'No' : 'Tal vez...',
+      fromWho: FromWho.destination,
+      imgUrl: image
+    );
 }
