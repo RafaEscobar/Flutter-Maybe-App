@@ -7,7 +7,7 @@ mixin class GetYesNoAnswer {
 
   Future<Message> getAnswer() async {
     final response = await _dio.get('https://yesno.wtf/api');
-    final mappingResponse = YesNoModel.fromJsonMap(response.data);
+    final mappingResponse = YesNoModel.fromJson(response.data);
 
     return Message(
       message: mappingResponse.answer,
