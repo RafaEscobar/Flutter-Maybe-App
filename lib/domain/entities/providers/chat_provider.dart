@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:maybe_app/domain/entities/message.dart';
 
 class ChatProvider extends ChangeNotifier {
-
   final ScrollController chatScrollController = ScrollController();
 
   List<Message> messages = [
@@ -15,7 +14,6 @@ class ChatProvider extends ChangeNotifier {
     if (message.trim().isEmpty) return;
     final newMessage = Message(message: message, fromWho: FromWho.me);
     messages.add(newMessage);
-
     notifyListeners();
     await moveScrollToBottom();
   }
