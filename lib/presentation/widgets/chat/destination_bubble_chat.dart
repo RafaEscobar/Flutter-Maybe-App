@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maybe_app/domain/entities/message.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class DestinationBubbleChat extends StatelessWidget {
   final Message messageEntity;
@@ -56,7 +57,10 @@ class ImageResponse extends StatelessWidget {
             width: size.width * 0.6,
             height: 120,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: const Placeholder(),
+            child: const Skeletonizer(
+              enabled: true,
+              child : Placeholder()
+            )
           );
         },
       ),
